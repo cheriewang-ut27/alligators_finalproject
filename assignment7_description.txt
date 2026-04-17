@@ -1,0 +1,22 @@
+Group 9
+Cherie Wang, cw43222
+Akhila Gunturu, ag82388
+Sameer Baig, sb59947
+Alligator Fishing Game 
+
+This project features a user-controlled alligator chasing in an aquarium simulation. The alligator is controlled using
+A (left), W (up), D (right), S (down), and space (mouth open/close). The goal of the game is for the alligator to catch
+a fish within the time limit. If the timer finishes without the fish being caught, the player loses. Extra time leftover
+at the end of the level is equivalent to the number of points a player earns.
+ 
+We did this by designing one Creature class with two child classes. One child class is for the Alligator, and one child 
+class is or the Fish. The parent Creature class stores texture, position, velocity, movement animation, and bound 
+control. The Fish class includes random movement speed generation, control state=caught/not caught, and some parameters 
+for its movement to handle the random swimming. The Alligator class inherits from Creature and takes movement 
+information from user inputs, and has mouth open/close control. It also uses a timer to animate the swishing motion of
+the alligator's tail.
+
+We split the work as one person in charge of the Creature and Fish classes (Cherie), one person in charge of the 
+Alligator class (Akhila), and one person in charge of the GUI, timer, and overall game functionality (Sameer).
+
+Sameer implemented the countdown timer that controls the length of the game, score tracking based on the amount of time remaining when the fish is caught, and a HUD that displays both the timer and the player’s score during gameplay. Sameer also implemented the win and lose conditions, along with an end screen that displays whether the player won or lost, shows the final score, and allows the player to restart the game or exit.
