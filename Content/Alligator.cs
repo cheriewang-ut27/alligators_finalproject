@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace group_9_assignment7.Content;
+namespace alligators_finalproject.Content;
 
 public class Alligator : Creature
 {

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "group_9_assignment7", "group_9_assignment7.csproj", "{AD769A6C-D715-45F5-A455-1B440AA61D91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "alligators_finalproject", "alligators_finalproject.csproj", "{AD769A6C-D715-45F5-A455-1B440AA61D91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

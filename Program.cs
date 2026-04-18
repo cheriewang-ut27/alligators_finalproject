@@ -1,2 +1,2 @@
-﻿using var game = new group_9_assignment7.Game1();
+﻿using var game = new alligators_finalproject.Game1();
 game.Run();

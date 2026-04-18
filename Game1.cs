@@ -1,10 +1,10 @@
 using System;
-using group_9_assignment7.Content;
+using alligators_finalproject.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace group_9_assignment7;
+namespace alligators_finalproject;
 
 public class Game1 : Game
 {
