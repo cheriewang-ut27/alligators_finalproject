@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas>
+    <Texture>textures/atlas</Texture>
+    <Regions>
+        <Region n="ocean-tex" x="0" y="0" w="200" h="200" r="0" pX="0.5" pY="0.5" />
+        <Region n="sand-tex" x="200" y="0" w="200" h="200" r="0" pX="0.5" pY="0.5" />
+        
+        <Region n="jelly-death-1" x="0" y="200" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-death-2" x="48" y="200" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-death-3" x="96" y="200" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-death-4" x="144" y="200" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-death-5" x="192" y="200" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-death-6" x="240" y="200" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        
+        <Region n="jelly-attack-1" x="288" y="200" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-attack-2" x="336" y="200" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-attack-3" x="384" y="200" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-attack-4" x="432" y="200" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        
+        <Region n="jelly-hurt-1" x="400" y="0" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-hurt-2" x="448" y="0" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        
+        <Region n="player-hurt-1" x="400" y="48" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-hurt-2" x="448" y="48" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        
+        <Region n="player-attack-1" x="0" y="248" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-attack-2" x="48" y="248" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-attack-3" x="96" y="248" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-attack-4" x="144" y="248" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-attack-5" x="192" y="248" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-attack-6" x="240" y="248" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        
+        <Region n="jelly-idle-1" x="288" y="248" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-idle-2" x="336" y="248" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-idle-3" x="384" y="248" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-idle-4" x="432" y="248" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        
+        <Region n="player-death-1" x="0" y="296" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-death-2" x="48" y="296" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-death-3" x="96" y="296" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-death-4" x="144" y="296" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-death-5" x="192" y="296" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-death-6" x="240" y="296" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        
+        <Region n="jelly-walk-1" x="288" y="296" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-walk-2" x="336" y="296" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-walk-3" x="384" y="296" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="jelly-walk-4" x="432" y="296" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        
+        <Region n="player-idle-1" x="0" y="344" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-idle-2" x="48" y="344" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-idle-3" x="96" y="344" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-idle-4" x="144" y="344" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        
+        <Region n="player-walk-1" x="192" y="344" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-walk-2" x="240" y="344" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-walk-3" x="288" y="344" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+        <Region n="player-walk-4" x="336" y="344" w="48" h="48" r="0" pX="0.5" pY="0.5" />
+    </Regions>
+    <Animations>
+        <Animation n="jelly-idle" time="0.1">
+            <Frame region="jelly-idle-1"/>
+            <Frame region="jelly-idle-2"/>
+            <Frame region="jelly-idle-3"/>
+            <Frame region="jelly-idle-4"/>
+        </Animation>
+        
+        <Animation n="jelly-walk" time="0.1">
+            <Frame region="jelly-walk-1"/>
+            <Frame region="jelly-walk-2"/>
+            <Frame region="jelly-walk-3"/>
+            <Frame region="jelly-walk-4"/>
+        </Animation>
+
+        <Animation n="jelly-attack" time="0.1">
+            <Frame region="jelly-attack-1"/>
+            <Frame region="jelly-attack-2"/>
+            <Frame region="jelly-attack-3"/>
+            <Frame region="jelly-attack-4"/>
+        </Animation>
+
+        <Animation n="jelly-death" time="0.1">
+            <Frame region="jelly-death-1"/>
+            <Frame region="jelly-death-2"/>
+            <Frame region="jelly-death-3"/>
+            <Frame region="jelly-death-4"/>
+            <Frame region="jelly-death-5"/>
+            <Frame region="jelly-death-6"/>
+        </Animation>
+
+        <Animation n="jelly-hurt" time="0.1">
+            <Frame region="jelly-hurt-1"/>
+            <Frame region="jelly-hurt-2"/>
+        </Animation>
+
+        <Animation n="player-idle" time="0.1">
+            <Frame region="player-idle-1"/>
+            <Frame region="player-idle-2"/>
+            <Frame region="player-idle-3"/>
+            <Frame region="player-idle-4"/>
+        </Animation>
+
+        <Animation n="player-walk" time="0.1">
+            <Frame region="player-walk-1"/>
+            <Frame region="player-walk-2"/>
+            <Frame region="player-walk-3"/>
+            <Frame region="player-walk-4"/>
+        </Animation>
+
+        <Animation n="player-attack" time="0.1">
+            <Frame region="player-attack-1"/>
+            <Frame region="player-attack-2"/>
+            <Frame region="player-attack-3"/>
+            <Frame region="player-attack-4"/>
+            <Frame region="player-attack-5"/>
+            <Frame region="player-attack-6"/>
+        </Animation>
+
+        <Animation n="player-death" time="0.1">
+            <Frame region="player-death-1"/>
+            <Frame region="player-death-2"/>
+            <Frame region="player-death-3"/>
+            <Frame region="player-death-4"/>
+        </Animation>
+
+        <Animation n="player-hurt" time="0.1">
+            <Frame region="player-hurt-1"/>
+            <Frame region="player-hurt-2"/>
+        </Animation>
+    </Animations>
+</TextureAtlas>
