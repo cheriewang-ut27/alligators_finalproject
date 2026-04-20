@@ -38,7 +38,7 @@ public class Globals : Game
         GraphicsDevice = base.GraphicsDevice;
         SpriteBatch = new SpriteBatch(GraphicsDevice);
         
-        Atlas = TextureAtlas.FromFile(Content, "Textures/atlas.xml");
+        Atlas = TextureAtlas.FromFile(Content, "atlas.xml");
         
         base.Initialize();
     }
