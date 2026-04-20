@@ -14,6 +14,9 @@ public class Fish : Creature
     private float minFleeRadius = 80f; // can tweak
     private float maxFleeRadius = 150f;
     private float fleeRadius;
+    
+    private int screenWidth;
+    private int screenHeight;
 
     //Add screenWidth and screenHeight as parameters
     public Fish(Texture2D texture, Vector2 position, float minSpeed, float maxSpeed, int screenWidth, int screenHeight, float scale = 1f)
@@ -23,6 +26,9 @@ public class Fish : Creature
         directionChangeInterval = 1f + (float)random.NextDouble() * 2f;
         SetRandomDirection();
         fleeRadius = minFleeRadius + (float)random.NextDouble() * (maxFleeRadius - minFleeRadius);
+
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
     }
     
     public override void Update(GameTime gameTime)
@@ -93,5 +99,13 @@ public class Fish : Creature
             direction = Vector2.Lerp(direction, fleeDirection, 0.5f); // stronger reaction
             direction.Normalize();
         }
+    }
+    
+    public void SpawnFish()
+    {
+        int x = random.Next(0, screenWidth - (int)(texture.Width * scale));
+        int y = random.Next(0, screenHeight - (int)(texture.Height * scale));
+
+        position = new Vector2(x, y);
     }
 }

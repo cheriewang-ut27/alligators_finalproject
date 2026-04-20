@@ -38,6 +38,15 @@ public class Alligator : Creature
         HandleInput();
 
         base.Update(gameTime);
+        
+        float width = texture.Height * scale; // clamping 2 screen 
+        float height = texture.Width * scale;
+
+        float halfWidth = width / 2f;
+        float halfHeight = height / 2f;
+        
+        position.X = MathHelper.Clamp(position.X, halfWidth, screenWidth - halfWidth);
+        position.Y = MathHelper.Clamp(position.Y, halfHeight, screenHeight - halfHeight);
 
         AnimateMouth(gameTime);
         AnimateTail(gameTime);
@@ -82,13 +91,6 @@ public class Alligator : Creature
         if (kb.IsKeyDown(Keys.A)) direction.X -= 1;
         if (kb.IsKeyDown(Keys.D)) direction.X += 1;
         
-        
-        float width = texture.Width * scale; // clamping 2 screen 
-        float height = texture.Height * scale;
-
-        position = Vector2.Clamp(position,
-            Vector2.Zero,
-            new Vector2(screenWidth - width, screenHeight - height));
     }
 
     private void AnimateMouth(GameTime gameTime)
@@ -116,10 +118,30 @@ public class Alligator : Creature
     {
         return currentFrame == 3;
     }
+    
+    public new Rectangle GetBounds()
+    {
+        float width = texture.Height * scale;
+        float height = texture.Width * scale;
+
+        return new Rectangle(
+            (int)(position.X - width / 2),
+            (int)(position.Y - height / 2),
+            (int)width,
+            (int)height
+        );
+    }
+    
+    public Vector2 GetPosition()
+    {
+        return new Vector2(GetBounds().X, GetBounds().Y);
+    }
 
     public override void Draw(SpriteBatch spriteBatch)
     {
         Texture2D currentTexture = mouthFrames[currentFrame];
+        
+        Vector2 origin = new Vector2(currentTexture.Width / 2f, currentTexture.Height / 2f);
         
         spriteBatch.Draw(
             currentTexture,
@@ -127,7 +149,7 @@ public class Alligator : Creature
             null,
             Color.White,
             -MathHelper.PiOver2,
-            Vector2.Zero,
+            origin,
             scale,
             spriteEffect,
             0f

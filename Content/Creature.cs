@@ -6,7 +6,7 @@ namespace alligators_finalproject.Content;
 public class Creature
 {
     protected Texture2D texture;
-    protected Vector2 position;
+    public Vector2 position;
     protected Vector2 velocity; //if acceleration, otherwise dont need
     protected float speed;
     protected Vector2 direction;
