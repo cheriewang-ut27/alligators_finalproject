@@ -148,7 +148,7 @@ public class Alligator : Creature
             position,
             null,
             Color.White,
-            -MathHelper.PiOver2,
+            0f,
             origin,
             scale,
             spriteEffect,

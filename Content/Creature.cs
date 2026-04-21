@@ -54,9 +54,9 @@ public class Creature
     protected void UpdateDirection(Vector2 movement)
     {
         if (movement.X < 0)
-            spriteEffect = SpriteEffects.None; //texture default faces left
+            spriteEffect = SpriteEffects.FlipHorizontally;
         else if (movement.X > 0)
-            spriteEffect = SpriteEffects.FlipVertically; //turn texture to face right
+            spriteEffect = SpriteEffects.None;
     }
 
     public Rectangle GetBounds()

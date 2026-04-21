@@ -4,6 +4,8 @@ using alligators_finalproject.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace alligators_finalproject;
 
@@ -30,6 +32,20 @@ public class Game1 : Globals
     private Tilemap tilemap;
     private GameManager gameManager;
     private HUD hud;
+    
+    // SOUND 
+    private SoundEffect bubbleSound;
+    private SoundEffect chompSound;
+    private Song bgMusic;
+
+    private float volume = 0.5f;
+    private bool isMuted = false;
+    
+    private float moveSoundTimer = 0f;
+    private float moveSoundInterval = 0.3f;
+
+    private KeyboardState previousKb;
+    
 
     public Game1()  : base(1280, 720, false)
     {
@@ -92,6 +108,15 @@ public class Game1 : Globals
      
         hud = new HUD(Content.Load<SpriteFont>("HudFont"));
         
+        // SOUNDS
+        bubbleSound = Content.Load<SoundEffect>("sounds/bubblesound");
+        chompSound = Content.Load<SoundEffect>("sounds/chomp");
+        bgMusic = Content.Load<Song>("sounds/bgmusic");
+        
+        MediaPlayer.IsRepeating = true;
+        MediaPlayer.Volume = volume;
+        MediaPlayer.Play(bgMusic);
+        
         base.LoadContent();
         
     }
@@ -99,6 +124,33 @@ public class Game1 : Globals
     protected override void Update(GameTime gameTime)
     {
         KeyboardState kb = Keyboard.GetState();
+        
+        // SOUND CONTROL 
+        bool Pressed(Keys key) => kb.IsKeyDown(key) && !previousKb.IsKeyDown(key);
+        // mute control 
+        if (Pressed(Keys.M))
+        {
+            isMuted = !isMuted;
+            MediaPlayer.IsMuted = isMuted;
+        }
+        // volume up (.)
+        if (Pressed(Keys.OemPeriod))
+        {
+            volume = MathHelper.Clamp(volume + 0.1f, 0f, 1f);
+            MediaPlayer.Volume = volume;
+        }
+        // volume down (,)
+        if (Pressed(Keys.OemComma))
+        {
+            volume = MathHelper.Clamp(volume - 0.1f, 0f, 1f);
+            MediaPlayer.Volume = volume;
+        }
+        // chomp
+        if (Pressed(Keys.Space))
+        {
+            if (!isMuted)
+                chompSound.Play(volume, 0f, 0f);
+        }
 
         if (kb.IsKeyDown(Keys.Escape))
             Exit();
@@ -118,7 +170,17 @@ public class Game1 : Globals
                     jellyfish.Update(gameTime);
                     
                 }
+                Vector2 prevPos = alligator.position;
                 alligator.Update(gameTime);
+                moveSoundTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (alligator.position != prevPos && moveSoundTimer >= moveSoundInterval)
+                {
+                    if (!isMuted)
+                        bubbleSound.Play(volume, 0f, 0f);
+
+                    moveSoundTimer = 0f;
+                }
                 testFish.FleeFrom(alligator.GetPosition());
                 testFish.Update(gameTime);
                 
@@ -137,7 +199,7 @@ public class Game1 : Globals
                     
                 break;
         }
-
+        previousKb = kb;
         base.Update(gameTime);
     }
 

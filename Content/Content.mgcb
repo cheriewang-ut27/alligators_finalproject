@@ -104,6 +104,24 @@
 /processorParam:TextureFormat=Compressed
 /build:HudFont.spritefont
 
+#begin sounds/bgmusic.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/bgmusic.wav
+
+#begin sounds/bubblesound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/bubblesound.wav
+
+#begin sounds/chomp.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/chomp.wav
+
 #begin textures/atlas.png
 /importer:TextureImporter
 /processor:TextureProcessor

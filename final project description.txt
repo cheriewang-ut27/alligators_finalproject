@@ -13,3 +13,15 @@ press M to mute, . to increase sound and , to decrease sound
 Jellyfish class objects with animation hierarchies to animate their movement (1 level=bell, 1 level=tentacles) which will be created and coded by Cherie as part of the main menu screen design.
 Data input/output from user-created data to provide settings (e.g. a map-builder that generates a level map based on a XML or text file); Audrey will create an XML tilemap to map a texture atlas that contains sprites for entities and “environment” tiles. The sprites used in the main game will be animated using the XML file.
 Environmental sound that can be muted/controlled with keystrokes; potentially bubbling/water splashing sounds or an alligator bite sound (Akhila).
+
+
+
+ATTRIBUTIONS: 
+
+Background Music: Andrey Psyche - underwater boss level (original).wav by AndreyPsyche 
+-- https://freesound.org/s/561547/ -- License: Attribution 4.0
+
+Alligator chomp: Crank.wav by misato -- https://freesound.org/s/195139/ -- License: Creative Commons 0
+
+Bubble sound: 06515 bubble interface ding.wav by Robinhood76 
+-- https://freesound.org/s/341492/ -- License: Attribution NonCommercial 4.0
