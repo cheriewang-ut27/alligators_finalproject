@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TextureAtlas>
-    <Texture>atlas</Texture>
+    <Texture>textures/atlas</Texture>
     <Regions>
         <Region n="ocean-tex" x="0" y="0" w="200" h="200" r="0" pX="0.5" pY="0.5" />
         <Region n="sand-tex" x="200" y="0" w="200" h="200" r="0" pX="0.5" pY="0.5" />
