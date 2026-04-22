@@ -203,3 +203,32 @@ public class Game1 : Globals
         base.Draw(gameTime);
     }
 }
+
+
+
+
+// ===== GUI VARIABLES =====
+private float volumeDisplay = 100f;
+private bool isMutedDisplay = false;
+private KeyboardState prevKb;
+
+
+// ===== GUI INPUT (put inside Update()) =====
+if (kb.IsKeyDown(Keys.M) && !prevKb.IsKeyDown(Keys.M))
+    isMutedDisplay = !isMutedDisplay;
+
+if (kb.IsKeyDown(Keys.OemComma) && !prevKb.IsKeyDown(Keys.OemComma))
+    volumeDisplay = Math.Max(0, volumeDisplay - 10);
+
+if (kb.IsKeyDown(Keys.OemPeriod) && !prevKb.IsKeyDown(Keys.OemPeriod))
+    volumeDisplay = Math.Min(100, volumeDisplay + 10);
+
+
+// ===== KEY TRACKING (end of Update()) =====
+prevKb = kb;
+
+
+// ===== GUI DRAW (put inside Draw()) =====
+string volumeText = isMutedDisplay ? "Volume: Muted" : $"Volume: {(int)volumeDisplay}%";
+SpriteBatch.DrawString(hudFont, volumeText, new Vector2(ScreenBounds.Width - 200, 20), Color.White);
+SpriteBatch.DrawString(hudFont, "M | , | .", new Vector2(ScreenBounds.Width - 150, 50), Color.Gray);
