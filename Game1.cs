@@ -10,7 +10,7 @@ namespace alligators_finalproject;
 
 public class Game1 : Globals
 {
-    //private Jellyfish jellyfish;
+
     private List<Jellyfish> jellyfishList = new List<Jellyfish>();
     
     private Fish testFish;
@@ -18,21 +18,20 @@ public class Game1 : Globals
     private Texture2D fishTexture2;
     private Texture2D fishTexture3;
 
-    // ALLIGATOR
+    
     private Alligator alligator;
     private Texture2D gator1;
     private Texture2D gator2;
     private Texture2D gator3;
     private Texture2D gator4;
 
-    // GUI part
+   
     private SpriteFont hudFont;
     
     private Tilemap tilemap;
     private GameManager gameManager;
     private HUD hud;
 
-    // Volume control GUI addition
     private float volume = 0.5f;
     private bool isMuted = false;
     private KeyboardState previousKeyboardState;
@@ -86,14 +85,12 @@ public class Game1 : Globals
             0.2f
         );
         
-        //jellyfish = new Jellyfish(new Vector2(400, 300), ScreenBounds);
         jellyfishList.Add(new Jellyfish(new Vector2(800, 300), ScreenBounds));
         jellyfishList.Add(new Jellyfish(new Vector2(600, 300), ScreenBounds));
 
         hudFont = Content.Load<SpriteFont>("HudFont");
         hud = new HUD(hudFont);
 
-        // starting volume
         SoundEffect.MasterVolume = volume;
      
         base.LoadContent();
@@ -135,7 +132,6 @@ public class Game1 : Globals
             case GameState.Lose:
                 if (kb.IsKeyDown(Keys.R))
                 {
-                    // initialize new jellyfish
                     RestartGame();
                 }
                 break;
@@ -222,7 +218,7 @@ public class Game1 : Globals
 
         hud.Draw(SpriteBatch, gameManager);
 
-        //GUI
+        
         string volumeText = isMuted ? "Volume: Muted" : $"Volume: {(int)(volume * 100)}%";
         Vector2 textSize = hudFont.MeasureString(volumeText);
         Vector2 textPosition = new Vector2(ScreenBounds.Width - textSize.X - 20, 20);
