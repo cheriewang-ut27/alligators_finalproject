@@ -4,15 +4,17 @@ Akhila Gunturu, ag82388
 Sameer Baig, sb59947
 Audrey Park, ap59462
 
-The final project will be an extension of the Assignment 7 Alligator Fishing Game (Group 9). The game in its A7 form features a user-controlled alligator chasing in an aquarium simulation. The alligator is controlled using A (left), W (up), D (right), S (down), and space (mouth open/close). The goal of the game is for the alligator to catch a fish within the time limit of 30 seconds. If the timer finishes without the fish being caught, the player loses. Extra time leftover at the end of the level is equivalent to the number of points a player earns.
+The final project will be an extension of the Assignment 7 Alligator Fishing Game (Group 9). The game in its A7 form 
+featured a user-controlled alligator chasing in an aquarium simulation. The alligator is controlled using A (left), 
+W (up), D (right), S (down), and space (mouth open/close). The goal of the game is for the alligator to catch a fish 
+within the time limit of 30 seconds. If the timer finishes without the fish being caught, the player loses. Extra time 
+leftover at the end of the level is equivalent to the number of points a player earns.
 
-We will add to this:
-Keyboard interactivity with muting/sound control keystroke (Akhila)
-press M to mute, . to increase sound and , to decrease sound 
-2 additional GUI systems to provide a main menu screen and an in-game interface with buttons and display information; Sameer will implement both GUI systems and handle user interaction  
-Jellyfish class objects with animation hierarchies to animate their movement (1 level=bell, 1 level=tentacles) which will be created and coded by Cherie as part of the main menu screen design.
-Data input/output from user-created data to provide settings (e.g. a map-builder that generates a level map based on a XML or text file); Audrey will create an XML tilemap to map a texture atlas that contains sprites for entities and “environment” tiles. The sprites used in the main game will be animated using the XML file.
-Environmental sound that can be muted/controlled with keystrokes; potentially bubbling/water splashing sounds or an alligator bite sound (Akhila).
+To this, we added:
+- Keyboard interactivity with muting/sound control keystroke (Akhila). Press M to mute, . to increase sound and , to 
+decrease sound. Sound attributions are listed below. 
+- Smoothed the alligator movement and tail swishing (Akhila)
+
 
 
 

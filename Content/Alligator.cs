@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -16,7 +17,7 @@ public class Alligator : Creature
 
     private bool tailUp = true;
     private float tailTimer = 0f;
-    private float tailInterval = 1f;
+    private float tailInterval = 0.15f;
 
     public Alligator(
         Texture2D frame1,
@@ -51,23 +52,17 @@ public class Alligator : Creature
         AnimateMouth(gameTime);
         AnimateTail(gameTime);
     }
+
     
     private void AnimateTail(GameTime gameTime)
     {
-        tailTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if (isClosing) return;
 
-        if (tailTimer >= tailInterval)
-        {
-            tailTimer = 0f;
-            
-            if (!isClosing)
-            {
-                if (currentFrame == 1)
-                    currentFrame = 2;
-                else
-                    currentFrame = 1;
-            }
-        }
+        float t = (float)gameTime.TotalGameTime.TotalSeconds;
+        
+        float wave = (float)Math.Sin(t * 6f);
+
+        currentFrame = wave > 0 ? 1 : 2;
     }
 
     private void HandleInput()

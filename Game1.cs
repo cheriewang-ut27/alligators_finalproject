@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace alligators_finalproject;
 
@@ -25,10 +26,20 @@ public class Game1 : Globals
     private Texture2D gator4;
 
     private SpriteFont hudFont;
+    
+    // AUDIO
+    private SoundEffect bubbleSound;
+    private SoundEffect chompSound;
+    private Song bgMusic;
+
+    private float moveSoundTimer = 0f;
+    private float moveSoundInterval = 0.25f;
 
     private float volumeDisplay = 100f;
     private bool isMutedDisplay = false;
     private KeyboardState prevKb;
+    
+    private bool mouthClosedFlag = false;
     
     private Tilemap tilemap;
     private GameManager gameManager;
@@ -89,6 +100,15 @@ public class Game1 : Globals
 
         hudFont = Content.Load<SpriteFont>("HudFont");
         hud = new HUD(hudFont);
+        
+        // SOUNDS 
+        bubbleSound = Content.Load<SoundEffect>("sounds/bubblesound");
+        chompSound = Content.Load<SoundEffect>("sounds/chomp");
+        bgMusic = Content.Load<Song>("sounds/bgmusic");
+        
+        MediaPlayer.IsRepeating = true;
+        MediaPlayer.Volume = volumeDisplay / 100f;
+        MediaPlayer.Play(bgMusic);
 
         base.LoadContent();
     }
@@ -103,14 +123,23 @@ public class Game1 : Globals
         if (kb.IsKeyDown(Keys.M) && !prevKb.IsKeyDown(Keys.M))
         {
             isMutedDisplay = !isMutedDisplay;
-            SoundEffect.MasterVolume = isMutedDisplay ? 0f : volumeDisplay / 100f;
+
+            float vol = isMutedDisplay ? 0f : volumeDisplay / 100f;
+
+            SoundEffect.MasterVolume = vol;
+            MediaPlayer.Volume = vol;
         }
 
         if (kb.IsKeyDown(Keys.OemComma) && !prevKb.IsKeyDown(Keys.OemComma))
         {
             volumeDisplay = Math.Max(0, volumeDisplay - 10);
+
             if (!isMutedDisplay)
-                SoundEffect.MasterVolume = volumeDisplay / 100f;
+            {
+                float vol = volumeDisplay / 100f;
+                SoundEffect.MasterVolume = vol;
+                MediaPlayer.Volume = vol; 
+            }
         }
 
         if (kb.IsKeyDown(Keys.OemPeriod) && !prevKb.IsKeyDown(Keys.OemPeriod))
@@ -118,6 +147,7 @@ public class Game1 : Globals
             volumeDisplay = Math.Min(100, volumeDisplay + 10);
             if (!isMutedDisplay)
                 SoundEffect.MasterVolume = volumeDisplay / 100f;
+            MediaPlayer.Volume = volumeDisplay / 100f;
         }
 
         switch (gameManager.CurrentState)
@@ -133,7 +163,27 @@ public class Game1 : Globals
                     jellyfish.Update(gameTime);
                 }
 
+                Vector2 prevPos = alligator.position;
                 alligator.Update(gameTime);
+                
+                moveSoundTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                // bubble sound
+                if (alligator.position != prevPos && moveSoundTimer >= moveSoundInterval)
+                {
+                    if (!isMutedDisplay)
+                        bubbleSound.Play(volumeDisplay / 100f, 0f, 0f);
+
+                    moveSoundTimer = 0f;
+                }
+                // chomp sound
+                bool isClosedNow = alligator.IsMouthClosed();
+
+                if (kb.IsKeyDown(Keys.Space) && !prevKb.IsKeyDown(Keys.Space))
+                {
+                    if (!isMutedDisplay)
+                        chompSound.Play(volumeDisplay / 100f, 0f, 0f);
+                }
+                mouthClosedFlag = isClosedNow;
                 testFish.FleeFrom(alligator.GetPosition());
                 testFish.Update(gameTime);
                 

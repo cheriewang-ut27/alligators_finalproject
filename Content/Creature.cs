@@ -8,7 +8,9 @@ public class Creature
     protected Texture2D texture;
     public Vector2 position;
     protected Vector2 velocity; //if acceleration, otherwise dont need
-    protected float speed;
+    protected float acceleration = 0.3f;
+    protected float drag = 0.92f;
+    protected float speed = 6f;
     protected Vector2 direction;
     protected float scale = 1f;
     
@@ -31,11 +33,29 @@ public class Creature
     public virtual void Update(GameTime gameTime)
     {
         UpdateDirectionLogic(gameTime); //child decides direction with separate function
-
-        if (direction != Vector2.Zero)
+        
+        // note from akhila: i'm going to comment the original movement code out and try something to make it smoother
+        /*if (direction != Vector2.Zero)
             direction.Normalize();
 
-        position += direction * speed; //generic update position with normalized direction
+        position += direction * speed; //generic update position with normalized direction*/
+        if (direction != Vector2.Zero)
+        {
+            direction.Normalize();
+            velocity += direction * acceleration;
+        }
+        else
+        {
+            velocity *= drag;
+        }
+        
+        if (velocity.Length() > speed)
+        {
+            velocity.Normalize();
+            velocity *= speed;
+        }
+
+        position += velocity;
 
         UpdateDirection(direction); //flip texture as needed
     }
