@@ -8,6 +8,7 @@ public enum GameState
 {
     Menu,
     Playing,
+    LevelTransition,
     Win,
     Lose,
 }
@@ -16,16 +17,34 @@ public class GameManager
 {
     public int Score { get; private set; } = 0;
     public int Health { get; private set; } = 100;
-    public float TimeRemaining { get; private set; } = 60;
+    public float TimeRemaining { get; private set; } = 70;
+    public int CurrentLevel { get; private set; } = 1;
     public float InvincibilityTimer { get; private set; } = 0;
     private const float InvincibilityDuration = 1.5f;
 
-    public GameState CurrentState { get; private set; } = GameState.Menu;
+    public int TargetScore => CurrentLevel * 5;
+    public GameState CurrentState { get; set; } = GameState.Menu;
 
     public void AddScore(int amount)
     {
         Score += amount;
+        
+        if (Score >= TargetScore)
+        {
+            if (CurrentLevel < 3)
+                CurrentState = GameState.LevelTransition;
+            else
+                CurrentState = GameState.Win;
+        }
     }
+
+    public void NextLevel()
+    {
+        CurrentLevel++; 
+        TimeRemaining = 70;
+        CurrentState = GameState.Playing;
+    }
+    
 
     public void UpdateTimer(GameTime gameTime)
     {
@@ -58,20 +77,14 @@ public class GameManager
             }
         }
     }
-
-    public void CheckWinCondition()
-    {
-        if (Score >= 10)
-        {
-            CurrentState = GameState.Win;
-        }
-    }
+    
 
     public void StartGame()
     {
         Score = 0;
         Health = 100;
-        TimeRemaining = 60;
+        TimeRemaining = 70;
+        CurrentLevel = 1;
         CurrentState = GameState.Playing;
     }
 }

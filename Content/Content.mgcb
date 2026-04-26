@@ -97,12 +97,18 @@
 /processorParam:TextureFormat=Color
 /build:fish/fish3.png
 
-#begin HudFont.spritefont
+#begin fonts/HudFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:HudFont.spritefont
+/build:fonts/HudFont.spritefont
+
+#begin fonts/prstart.ttf
+/copy:fonts/prstart.ttf
+
+#begin fonts/prstartk.ttf
+/copy:fonts/prstartk.ttf
 
 #begin sounds/bgmusic.wav
 /importer:WavImporter
@@ -122,6 +128,30 @@
 /processorParam:Quality=Best
 /build:sounds/chomp.wav
 
+#begin sounds/eat.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/eat.wav
+
+#begin sounds/fail.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/fail.wav
+
+#begin sounds/success.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/success.wav
+
+#begin sounds/zap.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/zap.wav
+
 #begin textures/atlas.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -136,6 +166,18 @@
 
 #begin textures/atlas.xml
 /copy:textures/atlas.xml
+
+#begin textures/Ocean_SpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:textures/Ocean_SpriteSheet.png
 
 #begin textures/tilemap.xml
 /copy:textures/tilemap.xml

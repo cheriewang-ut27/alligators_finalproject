@@ -8,8 +8,8 @@ public class Creature
     protected Texture2D texture;
     public Vector2 position;
     protected Vector2 velocity; //if acceleration, otherwise dont need
-    protected float acceleration = 0.3f;
-    protected float drag = 0.92f;
+    protected float acceleration = 0.5f;
+    protected float drag = 0.9f;
     protected float speed = 6f;
     protected Vector2 direction;
     protected float scale = 1f;
@@ -30,15 +30,10 @@ public class Creature
         this.scale = scale;
     }
     
-    public virtual void Update(GameTime gameTime)
+    public virtual void Update(GameTime gameTime, Tilemap map)
     {
-        UpdateDirectionLogic(gameTime); //child decides direction with separate function
-        
-        // note from akhila: i'm going to comment the original movement code out and try something to make it smoother
-        /*if (direction != Vector2.Zero)
-            direction.Normalize();
-
-        position += direction * speed; //generic update position with normalized direction*/
+        UpdateDirectionLogic(gameTime);
+    
         if (direction != Vector2.Zero)
         {
             direction.Normalize();
@@ -48,16 +43,34 @@ public class Creature
         {
             velocity *= drag;
         }
-        
+    
         if (velocity.Length() > speed)
         {
             velocity.Normalize();
             velocity *= speed;
         }
 
-        position += velocity;
+        Vector2 nextPosition = position + velocity;
+        
+        if (!map.IsTileImpassable(new Vector2(nextPosition.X, position.Y)))
+        {
+            position.X = nextPosition.X;
+        }
+        else
+        {
+            velocity.X = 0; 
+        }
 
-        UpdateDirection(direction); //flip texture as needed
+        if (!map.IsTileImpassable(new Vector2(position.X, nextPosition.Y)))
+        {
+            position.Y = nextPosition.Y;
+        }
+        else
+        {
+            velocity.Y = 0; 
+        }
+
+        UpdateDirection(direction);
     }
 
     protected virtual void UpdateDirectionLogic(GameTime gameTime)

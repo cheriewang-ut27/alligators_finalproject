@@ -10,9 +10,7 @@ namespace alligators_finalproject;
 
 public class Tilemap
 {
-    // haven't fully implemented collision, but the sand blocks should be impassable   
-    // https://docs.monogame.net/articles/tutorials/building_2d_games/12_collision_detection/index.html
-    // bounds should also be implemented for enemies, player, and the coins
+    
     private readonly Tileset _tileset;
     private readonly int[] _tiles;
     
@@ -70,6 +68,19 @@ public class Tilemap
                 Scale, SpriteEffects.None, 1);
         }
     }
+    
+    public bool IsTileImpassable(Vector2 position)
+    {
+        int column = (int)(position.X / TileWidth);
+        int row = (int)(position.Y / TileHeight);
+
+        if (column < 0 || column >= Columns || row < 0 || row >= Rows)
+            return true;
+
+        int tileID = _tiles[row * Columns + column];
+        
+        return tileID == 1; 
+    }
 
     public static Tilemap FromFile(ContentManager content, string fileName)
     {
@@ -118,4 +129,6 @@ public class Tilemap
         }
       
     }
+    
+
 }

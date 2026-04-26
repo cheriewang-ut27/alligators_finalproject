@@ -34,21 +34,21 @@ public class Alligator : Creature
         mouthFrames = new Texture2D[] { frame1, frame2, frame3, frame4 };
     }
 
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Tilemap map)
     {
         HandleInput();
 
-        base.Update(gameTime);
+        base.Update(gameTime, map);
         
-        float width = texture.Height * scale; // clamping 2 screen 
-        float height = texture.Width * scale;
+        float width = texture.Width * scale; 
+        float height = texture.Height * scale;
 
         float halfWidth = width / 2f;
         float halfHeight = height / 2f;
         
         position.X = MathHelper.Clamp(position.X, halfWidth, screenWidth - halfWidth);
         position.Y = MathHelper.Clamp(position.Y, halfHeight, screenHeight - halfHeight);
-
+        
         AnimateMouth(gameTime);
         AnimateTail(gameTime);
     }
@@ -116,15 +116,15 @@ public class Alligator : Creature
     
     public new Rectangle GetBounds()
     {
-        float width = texture.Height * scale;
-        float height = texture.Width * scale;
+    int hitWidth = (int)((texture.Width * scale)); 
+    int hitHeight = (int)((texture.Height * scale));
 
-        return new Rectangle(
-            (int)(position.X - width / 2),
-            (int)(position.Y - height / 2),
-            (int)width,
-            (int)height
-        );
+    return new Rectangle(
+        (int)(position.X - hitWidth / 2),
+        (int)(position.Y - hitHeight / 2),
+        hitWidth,
+        hitHeight
+    );
     }
     
     public Vector2 GetPosition()

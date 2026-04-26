@@ -31,9 +31,9 @@ public class Fish : Creature
         this.screenHeight = screenHeight;
     }
     
-    public override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime, Tilemap map)
     {
-        base.Update(gameTime); //uses update from Creature
+        base.Update(gameTime, map); //uses update from Creature
     }
     
     protected override void UpdateDirectionLogic(GameTime gameTime)
@@ -101,11 +101,22 @@ public class Fish : Creature
         }
     }
     
-    public void SpawnFish()
+    public void SpawnFish(Vector2 playerPosition, Tilemap map)
     {
-        int x = random.Next(0, screenWidth - (int)(texture.Width * scale));
-        int y = random.Next(0, screenHeight - (int)(texture.Height * scale));
+        float minDistance = 300f;
+        Vector2 newPos;
+        bool inSand = true;
+        
+        do
+        {
+            int x = random.Next(50, screenWidth - 50);
+            int y = random.Next(50, screenHeight - 50);
+            newPos = new Vector2(x, y);
+            
+            inSand = map.IsTileImpassable(newPos);
 
-        position = new Vector2(x, y);
+        } while (inSand || Vector2.Distance(newPos, playerPosition) < minDistance);
+
+        position = newPos;
     }
 }

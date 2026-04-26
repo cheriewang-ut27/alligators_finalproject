@@ -68,8 +68,8 @@ public class Jellyfish
         sprite.Scale = new Vector2(3, 3);
         sprite.Center();
         
-        int width = (int)(sprite.Width * 0.4);
-        int height = (int)(sprite.Height * 0.8);
+        int width = (int)(sprite.Width * 0.3f);
+        int height = (int)(sprite.Height * 0.5f);
         int x = (int)(sprite.Width - width) / 2;
         int y = (int)(sprite.Height - height);
         bounds = new Rectangle(x, y, width, height);
