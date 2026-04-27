@@ -24,6 +24,12 @@ public class Game1 : Globals
     private Texture2D gator2;
     private Texture2D gator3;
     private Texture2D gator4;
+    
+    private MenuJellyfish menuJellyfish;
+    private Texture2D jellyBell;
+    private Texture2D jellyTentacleLeft;
+    private Texture2D jellyTentacleCenter;
+    private Texture2D jellyTentacleRight;
 
     private SpriteFont hudFont;
     
@@ -104,6 +110,19 @@ public class Game1 : Globals
             0.2f
         );
         
+        jellyBell = Content.Load<Texture2D>("jellyfish/bell");
+        jellyTentacleLeft = Content.Load<Texture2D>("jellyfish/tentacleL");
+        jellyTentacleCenter = Content.Load<Texture2D>("jellyfish/tentacleC");
+        jellyTentacleRight = Content.Load<Texture2D>("jellyfish/tentacleR");
+
+        menuJellyfish = new MenuJellyfish(
+            jellyBell,
+            jellyTentacleLeft,
+            jellyTentacleCenter,
+            jellyTentacleRight,
+            new Vector2(100, ScreenBounds.Height * 0.35f)
+        );
+        
         Texture2D oceanSheet = Content.Load<Texture2D>("textures/ocean_spritesheet");
         background = new Background(oceanSheet, 2, 8, 0.15f);
 
@@ -168,6 +187,9 @@ public class Game1 : Globals
         {
             case GameState.Menu:
                 SetupLevel();
+                
+                menuJellyfish.Update(gameTime, ScreenBounds);
+                
                 if (kb.IsKeyDown(Keys.Space))
                     gameManager.StartGame();
                 break;
@@ -345,6 +367,7 @@ public class Game1 : Globals
             Texture2D pixel = new Texture2D(GraphicsDevice, 1, 1);
             pixel.SetData(new[] { Color.Black });
             SpriteBatch.Draw(pixel, new Rectangle(0, 0, ScreenBounds.Width, ScreenBounds.Height), Color.Black * 0.6f);
+            menuJellyfish.Draw(SpriteBatch);
         }
         else
         {
