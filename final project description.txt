@@ -14,7 +14,10 @@ To this, we added:
 - Keyboard interactivity with muting/sound control keystroke (Akhila). Press M to mute, . to increase sound and , to 
 decrease sound. Sound attributions are listed below. 
 - Smoothed the alligator movement and tail swishing (Akhila)
-
+- 3 levels to the game with additional obstacles with each level (Audrey)
+- Multiple loss conditions based on health and added enemies (the jellyfish) contributing to this (Audrey)
+- Revamped the GUI to make the game more professional and advanced with additional volume/level information displayed (Audrey)
+- Added a start/rules screen for players to understand the new functions of the game (animation hierarchy included on this page) (Cherie)
 
 
 

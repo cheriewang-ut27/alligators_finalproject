@@ -34,7 +34,29 @@ public class HUD
             
             Vector2 titleSize = _font.MeasureString(title);
             DrawStringWithShadow(spriteBatch, title, new Vector2(centerX - titleSize.X/2, centerY - 100), Color.Cyan);
-            DrawStringWithShadow(spriteBatch, subTitle, new Vector2(centerX - _font.MeasureString(subTitle).X/2, centerY - 20), Color.Yellow);
+            DrawStringWithShadow(spriteBatch, subTitle, new Vector2(centerX - _font.MeasureString(subTitle).X / 2, centerY - 20), Color.Yellow);
+
+            string[] rules =
+            {
+                "Eat 5 fish to complete each level",
+                "Complete 3 levels to win",
+                "Avoid jellyfish or get zapped!",
+                "Move with WASD",
+                "Press SPACE to chomp"
+            };
+
+            for (int i = 0; i < rules.Length; i++)
+            {
+                string rule = rules[i];
+                Vector2 ruleSize = _font.MeasureString(rule);
+
+                DrawStringWithShadow(
+                    spriteBatch,
+                    rule,
+                    new Vector2(centerX - ruleSize.X / 2, centerY + 40 + i * 30),
+                    Color.White
+                );
+            }
         }
         else 
         {
@@ -58,18 +80,29 @@ public class HUD
             if (gm.CurrentState == GameState.Win || gm.CurrentState == GameState.Lose)
             {
                 string mainMsg = gm.CurrentState == GameState.Win ? "VICTORY!" : "GAME OVER!";
+                string restartMsg = "Press [R] to Restart";
+
                 Color msgColor = gm.CurrentState == GameState.Win ? Color.Gold : Color.OrangeRed;
-                
-                Vector2 sz = _font.MeasureString(mainMsg);
-                DrawStringWithShadow(spriteBatch, mainMsg, new Vector2(centerX - sz.X/2, centerY - 50), msgColor);
-                DrawStringWithShadow(spriteBatch, "Press [R] to Restart", new Vector2(centerX - 120, centerY + 20), Color.White);
+    
+                Vector2 mainMsgSize = _font.MeasureString(mainMsg);
+                Vector2 restartMsgSize = _font.MeasureString(restartMsg);
+
+                DrawStringWithShadow(spriteBatch, mainMsg, new Vector2(centerX - mainMsgSize.X / 2, centerY - 50), msgColor);
+
+                DrawStringWithShadow(spriteBatch, restartMsg, new Vector2(centerX - restartMsgSize.X / 2, centerY + 20), Color.White);
             }
 
             if (gm.CurrentState == GameState.LevelTransition)
             {
                 string msg = $"LEVEL {gm.CurrentLevel} COMPLETE!";
-                DrawStringWithShadow(spriteBatch, msg, new Vector2(centerX - _font.MeasureString(msg).X/2, centerY - 50), Color.Cyan);
-                DrawStringWithShadow(spriteBatch, "Press [X] for Next Level", new Vector2(centerX - 180, centerY + 20), Color.White);
+                string nextMsg = "Press [X] for Next Level";
+
+                Vector2 msgSize = _font.MeasureString(msg);
+                Vector2 nextMsgSize = _font.MeasureString(nextMsg);
+
+                DrawStringWithShadow(spriteBatch, msg, new Vector2(centerX - msgSize.X / 2, centerY - 50), Color.Cyan);
+
+                DrawStringWithShadow(spriteBatch, nextMsg, new Vector2(centerX - nextMsgSize.X / 2, centerY + 20), Color.White);
             }
         }
     }
